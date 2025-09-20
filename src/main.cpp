@@ -1,14 +1,28 @@
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>          // Core GLM features
+#include <glm/gtc/matrix_transform.hpp> // For transformations
+#include <glm/gtc/type_ptr.hpp> // For converting to raw pointers
+
+#include <iostream>
 
 int main(void)
 {
+    // --- Test GLM ---
+    glm::vec3 a(1.0f, 2.0f, 3.0f);
+    glm::vec3 b(3.0f, 2.0f, 1.0f);
+    glm::vec3 c = a + b;
+
+    std::cout << "GLM vector test: ("
+              << c.x << ", "
+              << c.y << ", "
+              << c.z << ")\n";
+
+    // --- Your existing GLFW code ---
     GLFWwindow* window;
 
-    /* Initialize the library */
     if (!glfwInit())
         return -1;
 
-    /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window)
     {
@@ -16,19 +30,13 @@ int main(void)
         return -1;
     }
 
-    /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
-    /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        /* Swap front and back buffers */
         glfwSwapBuffers(window);
-
-        /* Poll for and process events */
         glfwPollEvents();
     }
 
