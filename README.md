@@ -24,27 +24,6 @@ git clone --recurse-submodules https://github.com/muntalee/learn-opengl-template
 
 ## Install
 
-* **Ubuntu / Debian**
-
-  ```bash
-  sudo apt update
-  sudo apt install build-essential cmake ninja-build libgl1-mesa-dev xorg-dev
-  ```
-
-* **Fedora**
-
-  ```bash
-  sudo dnf install gcc-c++ cmake ninja-build mesa-libGL-devel libX11-devel libXrandr-devel libXcursor-devel libXi-devel
-  ```
-
-* **macOS**
-
-  ```bash
-  brew install cmake ninja
-  ```
-
-  (OpenGL and Clang come with macOS.)
-
 * **Windows**
 
   * **Option 1: Scoop + MinGW (GCC toolchain) RECOMMENDED**
@@ -67,6 +46,28 @@ git clone --recurse-submodules https://github.com/muntalee/learn-opengl-template
       winget install Ninja-build.Ninja
       ```
 
+* **macOS**
+
+  ```bash
+  brew install cmake ninja
+  ```
+
+  (OpenGL and Clang come with macOS.)
+
+* **Linux**
+
+  * **Ubuntu / Debian**
+
+    ```bash
+    sudo apt update
+    sudo apt install build-essential cmake ninja-build libgl1-mesa-dev xorg-dev
+    ```
+
+  * **Fedora**
+
+    ```bash
+    sudo dnf install gcc-c++ cmake ninja-build mesa-libGL-devel libX11-devel libXrandr-devel libXcursor-devel libXi-devel
+    ```
 
 ## Build & Run
 
