@@ -1,8 +1,17 @@
-# Simple C/C++ Project Setup
+# OpenGL Boilerplate Setup
 
-This is a minimal cross-platform C++ project that currently uses **GLFW** and **OpenGL**, built with **CMake**.
+A basic OpenGL setup using `CMake`. the project includes the following libraries
+- [`glfw`](https://github.com/glfw/glfw)
+- [`glm`](https://github.com/g-truc/glm)
+- [`glew 2.2.0`](https://github.com/nigels-com/glew/releases/tag/glew-2.2.0)
 
-A `Makefile` is included to make building and running the project consistent across Linux, macOS, and Windows.
+A `Makefile` is included to make building and running the project consistent on macOS and Windows (have not tested Linux).
+
+## Download
+
+```
+git clone --recurse-submodules https://github.com/muntalee/learn-opengl-template/
+```
 
 ## Dependencies
 
@@ -12,12 +21,6 @@ A `Makefile` is included to make building and running the project consistent acr
   * Clang (via Xcode tools) on macOS
   * MSVC (Visual Studio) or MinGW on Windows
 * **Ninja** (build tool)
-
-## Download
-
-```
-git clone --recurse-submodules https://github.com/muntalee/sample-c-cpp-project
-```
 
 ## Install
 
@@ -44,7 +47,17 @@ git clone --recurse-submodules https://github.com/muntalee/sample-c-cpp-project
 
 * **Windows**
 
-  * **Option 1: Visual Studio (MSVC toolchain)**
+  * **Option 1: Scoop + MinGW (GCC toolchain) RECOMMENDED**
+
+    * Install [Scoop](https://scoop.sh/) (a Windows package manager).
+    * Then all other dependencies
+
+      ```powershell
+      scoop install mingw
+      scoop install ninja cmake
+      ```
+
+  * **Option 2: Visual Studio (MSVC toolchain)**
 
     * Install [Visual Studio Community](https://visualstudio.microsoft.com/)
       (Choose **Desktop development with C++** workload.)
@@ -54,15 +67,6 @@ git clone --recurse-submodules https://github.com/muntalee/sample-c-cpp-project
       winget install Ninja-build.Ninja
       ```
 
-  * **Option 2: Scoop + MinGW (GCC toolchain)**
-
-    * Install [Scoop](https://scoop.sh/) (a Windows package manager).
-    * Then all other dependencies
-
-      ```powershell
-      scoop install mingw
-      scoop install ninja cmake
-      ```
 
 ## Build & Run
 
