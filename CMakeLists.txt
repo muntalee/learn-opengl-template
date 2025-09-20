@@ -13,9 +13,21 @@ add_executable(${OUT} ${SOURCES})
 # include directories
 target_include_directories(${OUT} PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
-# add external libraries
+# glfw
 add_subdirectory(${CMAKE_SOURCE_DIR}/extern/glfw)
+
+# glm
 add_subdirectory(${CMAKE_SOURCE_DIR}/extern/glm)
+
+# glew (static build)
+set(GLEW_SRC ${CMAKE_SOURCE_DIR}/extern/glew/src/glew.c)
+add_library(glew STATIC ${GLEW_SRC})
+target_include_directories(glew PUBLIC ${CMAKE_SOURCE_DIR}/extern/glew/include)
+
+# make sure Windows builds know it's static
+if (WIN32)
+    target_compile_definitions(glew PUBLIC GLEW_STATIC)
+endif()
 
 # link libraries
 find_package(OpenGL REQUIRED)
@@ -23,6 +35,16 @@ find_package(OpenGL REQUIRED)
 target_link_libraries(${OUT}
     PRIVATE
         glfw
-        OpenGL::GL
+        glew
         glm
+        OpenGL::GL
 )
+
+if (WIN32)
+    # Required for wgl* functions
+    target_link_libraries(${OUT}
+        PRIVATE
+            gdi32
+            user32
+    )
+endif()
